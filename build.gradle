@@ -15,6 +15,17 @@ buildscript {
     }
 }
 
+ext {
+    retrofitVersion = '2.3.0'
+    rxJavaVersion = '2.1.1'
+    moshiVersion = '1.8.0'
+    glideVersion = '4.9.0'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    androidXTestCoreVersion = '1.2.0'
+    robolectricVersion = '4.3.1'
+    archTestingVersion = '2.0.0'
+}
+
 allprojects {
     repositories {
         google()
