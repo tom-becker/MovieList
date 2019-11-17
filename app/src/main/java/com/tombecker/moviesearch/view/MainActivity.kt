@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tombecker.moviesearch.R
-import com.tombecker.moviesearch.model.Movie
+import com.tombecker.moviesearch.model.MoviesResponse.Movie
 import com.tombecker.moviesearch.util.NetworkChangeReceiver
 import com.tombecker.moviesearch.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*

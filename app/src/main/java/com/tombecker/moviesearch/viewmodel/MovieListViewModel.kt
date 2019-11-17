@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tombecker.moviesearch.api.ApiManager
-import com.tombecker.moviesearch.model.Movie
 import com.tombecker.moviesearch.model.MoviesResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -12,14 +11,14 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieListViewModel: ViewModel() {
 
-    val movieListLiveData = MutableLiveData<List<Movie>>()
+    val movieListLiveData = MutableLiveData<List<MoviesResponse.Movie>>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val apiErrorLiveData = MutableLiveData<Boolean>()
 
     private val apiManager = ApiManager()
     private val disposable = CompositeDisposable()
 
-    private var movieList = arrayListOf<Movie>()
+    private var movieList = arrayListOf<MoviesResponse.Movie>()
 
     fun fetchMoviesByTitle(title: String) {
         loadingLiveData.postValue(true)
@@ -60,16 +59,7 @@ class MovieListViewModel: ViewModel() {
 
         movieList.clear()
         moviesResponse.let { response ->
-            response.movies.forEach { movie ->
-                movieList.add(
-                    Movie(
-                        movie.title,
-                        movie.type,
-                        movie.year,
-                        movie.poster
-                    )
-                )
-            }
+            movieList.addAll(response.movies)
         }
         movieListLiveData.postValue(movieList)
     }

@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.tombecker.moviesearch.R
-import com.tombecker.moviesearch.model.Movie
+import com.tombecker.moviesearch.model.MoviesResponse.Movie
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class MovieListAdapter(private val context: Context):
@@ -33,7 +33,7 @@ class MovieListAdapter(private val context: Context):
             typeTextView.text = movieList[position].type
             yearTextView.text = movieList[position].year
             Glide.with(context)
-                .load(movieList[position].posterUrl)
+                .load(movieList[position].poster)
                 .override(200, 300)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(posterImgView)
